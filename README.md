@@ -1,2 +1,2 @@
 # Mercado Limpo 
-## Projeto integrador do Generation Brasil
+## Projeto integrador da Generation Brasil
