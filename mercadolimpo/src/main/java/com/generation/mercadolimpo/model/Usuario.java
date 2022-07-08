@@ -23,6 +23,13 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
+	
+
+	
+	
+	
+
+
 	// @NotBlank -> Válida se o campo está nulo ou vazio.
 	@NotBlank(message = "Nome não pode estar vazio ou nulo.")
 	@Size(min = 10, max = 100)
@@ -32,6 +39,7 @@ public class Usuario {
 	@Email(message = "Email invalido!")
 	@Size(min = 10, max = 100)
 	private String email;
+
 
 	@NotBlank(message = "Email não pode estar vazio ou nulo.")
 	@Pattern(regexp = "\\A(?=\\S*?[0-9])(?=\\S*?[a-z])(?=\\S*?[A-Z])(?=\\S*?[@#$%^&+=])\\S{8,}\\z", message = "1 caracter maiusculo \n 1 caracter especial")
