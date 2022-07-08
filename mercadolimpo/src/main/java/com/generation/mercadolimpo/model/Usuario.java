@@ -26,22 +26,20 @@ public class Usuario {
 	private long id;
 	
 	//@NotBlank -> Válida se o campo está nulo ou vazio.
+	
 	@NotBlank(message = "Nome não pode estar vazio ou nulo.")
 	@Size(min = 10, max = 100)
 	private String nome;
 	
 	
 	@NotBlank(message = "Email não pode estar vazio ou nulo.")
-	//@Email: Verifica se o campo possui as características de um endereço de e-mail.
 	@Email(message = "Email invalido!")
 	@Size(min = 10, max = 100)
-	@Column(unique = true) // email nao pode se repetir
 	private String email;
 	
-	@NotBlank(message = "Email não pode estar vazio ou nulo.")
 	
-	//1 carcater especial	
-	//1 caracter maiusculo
+	
+	@NotBlank(message = "Email não pode estar vazio ou nulo.")
 	@Pattern(regexp = "\\A(?=\\S*?[0-9])(?=\\S*?[a-z])(?=\\S*?[A-Z])(?=\\S*?[@#$%^&+=])\\S{8,}\\z", message = "1 caracter maiusculo \n 1 caracter especial")
 	private String senha;
 	
