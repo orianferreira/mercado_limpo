@@ -1,4 +1,4 @@
 # Mercado Limpo - Projeto integrador da Generation Brasil
 
 ## Banco de dados
-![der_db_mercado_limpo](https://user-images.githubusercontent.com/101234800/176012456-a209bc94-91e2-4ea1-b4b1-ca25dc611df9.png)
+![der_db_mercado_limpo](https://user-images.githubusercontent.com/101234800/178006286-fc3097be-2467-462e-9f38-4adba19a12cc.png)
