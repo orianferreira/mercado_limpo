@@ -9,7 +9,9 @@ import com.generation.mercadolimpo.model.Usuario;
 
 @Repository
 public interface RepositoryUsuario extends JpaRepository<Usuario, Long> {
-	public List<Usuario>findAllByNomeContainingIgnoreCase(String email);
+	public List<Usuario>findAllByNomeContainingIgnoreCase(String nome);
+
+	public List<Usuario> findAllByEmailContainingIgnoreCase(String email);
 	
 	
 
