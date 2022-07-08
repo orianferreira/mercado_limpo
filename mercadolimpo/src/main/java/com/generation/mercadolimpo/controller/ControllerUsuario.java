@@ -22,7 +22,7 @@ import com.generation.mercadolimpo.repository.RepositoryUsuario;
 
 @RestController
 @RequestMapping("/usuario")
-@CrossOrigin("*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ControllerUsuario {
 
 	@Autowired
@@ -43,17 +43,27 @@ public class ControllerUsuario {
 		return ResponseEntity.ok().body(repository.save(usuario));
 	}
 
-	@GetMapping("/{id}")
+	@GetMapping("/id/{id}")
 	public ResponseEntity<Usuario> buscaPorId(@PathVariable long id) {
 		return repository.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
 	}
+	
 
-	@GetMapping("/{nome}")
-	public ResponseEntity<Usuario> buscaPornome(@PathVariable long id) {
-		return repository.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
+	/*
+	 * 
+	 * 
+	 * @GetMapping("/nome/{nome}")
+	public ResponseEntity<List<Usuario>> buscaPornome(@PathVariable String nome) {
+		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome));
 	}
+	
+	@GetMapping("/email/{email}")
+	public ResponseEntity<List<Usuario>> getByEmail(@PathVariable String email) {
+		return ResponseEntity.ok(repository.findAllByEmailContainingIgnoreCase(email));
+	}*/
+	
 
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/id/{id}")
 	public void delete(@PathVariable long id) {
 		repository.deleteById(id);
 	}
