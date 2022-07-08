@@ -49,7 +49,10 @@ public class ControllerUsuario {
 	}
 	
 
-	@GetMapping("/nome/{nome}")
+	/*
+	 * 
+	 * 
+	 * @GetMapping("/nome/{nome}")
 	public ResponseEntity<List<Usuario>> buscaPornome(@PathVariable String nome) {
 		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome));
 	}
@@ -57,7 +60,7 @@ public class ControllerUsuario {
 	@GetMapping("/email/{email}")
 	public ResponseEntity<List<Usuario>> getByEmail(@PathVariable String email) {
 		return ResponseEntity.ok(repository.findAllByEmailContainingIgnoreCase(email));
-	}
+	}*/
 	
 
 	@DeleteMapping("/id/{id}")
