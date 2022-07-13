@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.generation.mercadolimpo.model.Usuario;
-import com.generation.mercadolimpo.repository.RepositoryUsuario;
+import com.generation.mercadolimpo.repository.UsuarioRepository;
 
 @RestController
 @RequestMapping("/usuario")
@@ -26,7 +26,7 @@ import com.generation.mercadolimpo.repository.RepositoryUsuario;
 public class UsuarioController {
 
 	@Autowired
-	private RepositoryUsuario repository;
+	private UsuarioRepository repository;
 
 	@GetMapping
 	public ResponseEntity<List<Usuario>> getAll() {
