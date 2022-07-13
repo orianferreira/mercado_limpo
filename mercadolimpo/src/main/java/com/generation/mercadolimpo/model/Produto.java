@@ -20,28 +20,28 @@ public class Produto {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
-	@NotBlank
-	@Size(min = 10, max = 500)
+	@NotBlank(message = "Título não pode estar vazio ou nulo")
+	@Size(min = 2, max = 100)
 	private String nome;
 
-	@NotBlank
-	@Size(min = 10, max = 500)
+	@NotBlank(message = "Descrição não pode estar vazio ou nulo")
 	private String descricao;
-
+	
 	@NotNull
 	private double preco;
-
+	
 	@NotNull
 	private int estoque;
-
+	
 	@ManyToOne
-    @JsonIgnoreProperties("produto")
+	@JsonIgnoreProperties("produtos")
 	private Categoria categoria;
-
+	
 	@ManyToOne
-	@JsonIgnoreProperties("produto")
+	@JsonIgnoreProperties("produtos")
 	private Usuario usuario;
 
+	
 	public long getId() {
 		return id;
 	}

@@ -1,62 +1,43 @@
 package com.generation.mercadolimpo.model;
 
-
-
-
 import java.util.List;
 
 import javax.persistence.CascadeType;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 
-@Table(name = "tb_usuario")
-
+@Table(name = "usuario")
 public class Usuario {
 
 	@Id
-
-	// @GeneratedValue fara o auto_increment no id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
-
-
-	// @NotBlank -> Válida se o campo está nulo ou vazio.
 	@NotBlank(message = "Nome não pode estar vazio ou nulo.")
-	@Size(min = 10, max = 100)
 	private String nome;
 
-	@NotBlank(message = "Email não pode estar vazio ou nulo.")	
-	@Email(message = "Email invalido!")
-	@Size(min = 10, max = 100)
+	@NotBlank(message = "Email não pode estar vazio ou nulo.")
 	private String email;
 
-
 	@NotBlank(message = "Email não pode estar vazio ou nulo.")
-	@Pattern(regexp = "\\A(?=\\S*?[0-9])(?=\\S*?[a-z])(?=\\S*?[A-Z])(?=\\S*?[@#$%^&+=])\\S{8,}\\z", message = "1 caracter maiusculo \n 1 caracter especial")
 	private String senha;
 
 	private String foto;
-
-	private boolean admin = false;
 
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("usuario")
 	private List<Produto> produto; 
 
+	
 	public long getId() {
 		return id;
 	}
@@ -97,13 +78,6 @@ public class Usuario {
 		this.foto = foto;
 	}
 
-	public boolean isAdmin() {
-		return admin;
-	}
-
-	public void setAdmin(boolean admin) {
-		this.admin = admin;
-	}
 	public List<Produto> getProduto() {
 		return produto;
 	}

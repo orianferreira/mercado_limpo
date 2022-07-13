@@ -21,19 +21,17 @@ public class Categoria {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-
-	@NotBlank
-	@Size(min = 10, max = 500)
+	
+	@NotBlank(message = "Categoria não pode estar vazio ou nulo")
 	private String nome;
-
-	@NotBlank
-	@Size(min = 10, max = 500)
+	
 	private String tipo;
 
 	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("categoria")
 	private List<Produto> produto;
 
+	
 	public long getId() {
 		return id;
 	}

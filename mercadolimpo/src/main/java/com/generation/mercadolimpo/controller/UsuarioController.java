@@ -23,45 +23,30 @@ import com.generation.mercadolimpo.repository.RepositoryUsuario;
 @RestController
 @RequestMapping("/usuario")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-public class ControllerUsuario {
+public class UsuarioController {
 
 	@Autowired
 	private RepositoryUsuario repository;
 
 	@GetMapping
-	public ResponseEntity<List<Usuario>> GetAll() {
+	public ResponseEntity<List<Usuario>> getAll() {
 		return ResponseEntity.ok(repository.findAll());
+	}
+	
+	@GetMapping("/id/{id}")
+	public ResponseEntity<Usuario> getById(@PathVariable long id) {
+		return repository.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
 	}
 
 	@PostMapping
-	public ResponseEntity<Usuario> inserirUsuario(@RequestBody @Valid Usuario usuario) {
+	public ResponseEntity<Usuario> post(@RequestBody @Valid Usuario usuario) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(usuario));
 	}
 
 	@PutMapping
-	public ResponseEntity<Usuario> atualizarUsuario(@RequestBody Usuario usuario) {
+	public ResponseEntity<Usuario> put(@RequestBody Usuario usuario) {
 		return ResponseEntity.ok().body(repository.save(usuario));
 	}
-
-	@GetMapping("/id/{id}")
-	public ResponseEntity<Usuario> buscaPorId(@PathVariable long id) {
-		return repository.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
-	}
-	
-
-	/*
-	 * 
-	 * 
-	 * @GetMapping("/nome/{nome}")
-	public ResponseEntity<List<Usuario>> buscaPornome(@PathVariable String nome) {
-		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome));
-	}
-	
-	@GetMapping("/email/{email}")
-	public ResponseEntity<List<Usuario>> getByEmail(@PathVariable String email) {
-		return ResponseEntity.ok(repository.findAllByEmailContainingIgnoreCase(email));
-	}*/
-	
 
 	@DeleteMapping("/id/{id}")
 	public void delete(@PathVariable long id) {
