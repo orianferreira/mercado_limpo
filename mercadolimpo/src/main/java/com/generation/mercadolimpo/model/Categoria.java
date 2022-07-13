@@ -31,6 +31,7 @@ public class Categoria {
 	private List<Produto> produto;
 
 	
+	
 	public long getId() {
 		return id;
 	}
@@ -54,6 +55,7 @@ public class Categoria {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
+
 	public List<Produto> getProduto() {
 		return produto;
 	}
@@ -61,5 +63,6 @@ public class Categoria {
 	public void setProduto(List<Produto> produto) {
 		this.produto = produto;
 	}
+
 
 }

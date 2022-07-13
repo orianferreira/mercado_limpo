@@ -14,7 +14,6 @@ import javax.validation.constraints.NotBlank;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-
 @Table(name = "usuario")
 public class Usuario {
 
@@ -35,8 +34,9 @@ public class Usuario {
 
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("usuario")
-	private List<Produto> produto; 
+	private List<Produto> produto;
 
+	
 	
 	public long getId() {
 		return id;
@@ -84,6 +84,6 @@ public class Usuario {
 
 	public void setProduto(List<Produto> produto) {
 		this.produto = produto;
-	}
+	} 
 
 }

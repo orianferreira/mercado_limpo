@@ -8,7 +8,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -21,7 +20,6 @@ public class Produto {
 	private long id;
 
 	@NotBlank(message = "Título não pode estar vazio ou nulo")
-	@Size(min = 2, max = 100)
 	private String nome;
 
 	@NotBlank(message = "Descrição não pode estar vazio ou nulo")
@@ -34,13 +32,14 @@ public class Produto {
 	private int estoque;
 	
 	@ManyToOne
-	@JsonIgnoreProperties("produtos")
+	@JsonIgnoreProperties("produto")
 	private Categoria categoria;
 	
 	@ManyToOne
-	@JsonIgnoreProperties("produtos")
+	@JsonIgnoreProperties("produto")
 	private Usuario usuario;
 
+	
 	
 	public long getId() {
 		return id;
@@ -81,6 +80,7 @@ public class Produto {
 	public void setEstoque(int estoque) {
 		this.estoque = estoque;
 	}
+
 	public Categoria getCategoria() {
 		return categoria;
 	}
@@ -88,12 +88,13 @@ public class Produto {
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
+
 	public Usuario getUsuario() {
 		return usuario;
 	}
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
-	}
+	}	
 	
 }

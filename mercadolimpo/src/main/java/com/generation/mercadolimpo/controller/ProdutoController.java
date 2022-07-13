@@ -19,7 +19,7 @@ import com.generation.mercadolimpo.model.Produto;
 import com.generation.mercadolimpo.repository.ProdutoRepository;
 
 @RestController
-@RequestMapping("/produtos")
+@RequestMapping("/produto")
 @CrossOrigin("*")
 public class ProdutoController {
 
@@ -33,13 +33,11 @@ public class ProdutoController {
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Produto> getById(@PathVariable long id) {
-		return repository.findById(id)
-				.map(resp -> ResponseEntity.ok(resp))
-					.orElse(ResponseEntity.notFound().build());
+		return repository.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
 	}
 	
 	@GetMapping("/nome/{nome}")
-	public ResponseEntity<List<Produto>> GetByNome(@PathVariable String nome){
+	public ResponseEntity<List<Produto>> getByNome(@PathVariable String nome){
 		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome));
 	}
 	

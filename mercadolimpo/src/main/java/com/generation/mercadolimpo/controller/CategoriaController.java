@@ -22,24 +22,27 @@ import com.generation.mercadolimpo.repository.CategoriaRepository;
 @RequestMapping("/categoria")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class CategoriaController {
-	
+
 	@Autowired
 	private CategoriaRepository repository;
 	
 	@GetMapping
-	private ResponseEntity<List<Categoria>> getAll(){
+	public ResponseEntity<List<Categoria>> getAll() {
 		return ResponseEntity.ok(repository.findAll());
 	}
 	
+	@GetMapping("/{categoria}")
+	public ResponseEntity<List<Categoria>> getByNome(@PathVariable String nome) {
+		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome));
+	}
+	
 	@GetMapping("/{id}")
-	private ResponseEntity<Categoria> getById(@PathVariable long id){
-		return repository.findById(id)
-						.map(resp -> ResponseEntity.ok(resp))
-						.orElse(ResponseEntity.notFound().build());
+	public ResponseEntity<Categoria> getById(@PathVariable long id) {
+		return repository.findById(id).map(m -> ResponseEntity.ok(m)).orElse(ResponseEntity.notFound().build()); 
 	}
 	
 	@GetMapping("/tipo/{tipo}")
-	public ResponseEntity<List<Categoria>> getByTipo(@PathVariable String tipo){
+	public ResponseEntity<List<Categoria>> getByTipo(@PathVariable String tipo) {
 		return ResponseEntity.ok(repository.findAllByTipoContainingIgnoreCase(tipo));
 	}
 	
