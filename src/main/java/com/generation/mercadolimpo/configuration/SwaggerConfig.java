@@ -26,7 +26,7 @@ public class SwaggerConfig {
 					.name("Generation Brasil")
 					.url("https://brazil.generation.org/"))
 				.contact(new Contact()
-					.name("Débora Santos/ João Victor Lopes/ Luan Piauilino/ Marcelo Nascimento/ Maria Vitoria Venturini/ Rian Ferreira/ Wanessa dos Santos ")
+					.name("Débora Santos | João Victor Lopes | Luan Piauilino | Marcelo Nascimento | Maria Vitoria Venturini | Rian Ferreira | Wanessa dos Santos ")
 					.url("https://github.com/orianferreira/mercado_limpo")))
 				.externalDocs(new ExternalDocumentation()
 					.description("Github")

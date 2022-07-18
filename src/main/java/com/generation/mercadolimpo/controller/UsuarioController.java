@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.generation.mercadolimpo.model.Usuario;
 import com.generation.mercadolimpo.model.UsuarioLogin;
 import com.generation.mercadolimpo.repository.UsuarioRepository;
-import com.generation.mercadolimpo.service.UserService;
+import com.generation.mercadolimpo.service.UsuarioService;
 
 @RestController
 @RequestMapping("/usuario")
@@ -27,7 +27,7 @@ import com.generation.mercadolimpo.service.UserService;
 public class UsuarioController {
 
 	@Autowired
-	private UserService userService;
+	private UsuarioService userService;
 	
 	@Autowired
 	private UsuarioRepository userRepository;
@@ -39,19 +39,19 @@ public class UsuarioController {
 	
 	@PostMapping("/login")
 	public ResponseEntity<UsuarioLogin> Authentication(@RequestBody Optional<UsuarioLogin> user) {
-		return userService.login(user).map(m -> ResponseEntity.ok(m))
+		return userService.Logar(user).map(m -> ResponseEntity.ok(m))
 															 .orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
 	}
 	
 	@PostMapping("/cadastrar")
 	public ResponseEntity<Usuario> post(@RequestBody Usuario usuario) {
 		return ResponseEntity.status(HttpStatus.CREATED)
-												.body(userService.register(usuario));
+												.body(userService.CadastrarUsuario(usuario));
 	}
 	
 	@PutMapping("/atualizar")
 	public ResponseEntity<Usuario> put(@Valid @RequestBody Usuario usuario) {
-		return userService.update(usuario)
+		return userService.Atualizar(usuario)
 			.map(resposta -> ResponseEntity.status(HttpStatus.OK).body(resposta))
 			.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}

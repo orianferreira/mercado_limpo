@@ -30,7 +30,7 @@ public class Usuario {
 	@Schema(example = "exemplo@email.com")
 	@NotBlank(message = "Email não pode estar vazio ou nulo.")
 	@Email(message = "O atributo email deve ser um endereço válido")
-	private String email;
+	private String usuario;
 
 	@NotBlank(message = "Senha não pode estar vazio ou nulo.")
 	private String senha;
@@ -41,8 +41,17 @@ public class Usuario {
 	@JsonIgnoreProperties("usuario")
 	private List<Produto> produto;
 
-	
-	
+	public Usuario(Long id, String nome, String usuario, String senha, String foto) {
+		this.id = id;
+		this.nome = nome;
+		this.usuario = usuario;
+		this.senha = senha;
+		this.foto = foto;
+	}
+
+	public Usuario() {
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -59,12 +68,12 @@ public class Usuario {
 		this.nome = nome;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getUsuario() {
+		return usuario;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
 
 	public String getSenha() {
@@ -89,6 +98,6 @@ public class Usuario {
 
 	public void setProduto(List<Produto> produto) {
 		this.produto = produto;
-	} 
+	}
 
 }

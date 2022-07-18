@@ -20,18 +20,16 @@ public class Categoria {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
+
 	@NotBlank(message = "Categoria não pode estar vazio ou nulo")
 	private String nome;
-	
+
 	private String tipo;
 
 	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("categoria")
 	private List<Produto> produto;
 
-	
-	
 	public long getId() {
 		return id;
 	}
@@ -63,6 +61,5 @@ public class Categoria {
 	public void setProduto(List<Produto> produto) {
 		this.produto = produto;
 	}
-
 
 }

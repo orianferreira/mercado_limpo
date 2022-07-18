@@ -24,23 +24,21 @@ public class Produto {
 
 	@NotBlank(message = "Descrição não pode estar vazio ou nulo")
 	private String descricao;
-	
+
 	@NotNull
 	private double preco;
-	
+
 	@NotNull
 	private int estoque;
-	
+
 	@ManyToOne
 	@JsonIgnoreProperties("produto")
 	private Categoria categoria;
-	
+
 	@ManyToOne
 	@JsonIgnoreProperties("produto")
 	private Usuario usuario;
 
-	
-	
 	public long getId() {
 		return id;
 	}
@@ -95,6 +93,6 @@ public class Produto {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
-	}	
-	
+	}
+
 }
