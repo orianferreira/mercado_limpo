@@ -9,9 +9,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 
 @Entity
 @Table(name = "usuario")
@@ -19,15 +22,17 @@ public class Usuario {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 
 	@NotBlank(message = "Nome não pode estar vazio ou nulo.")
 	private String nome;
 
+	@Schema(example = "exemplo@email.com")
 	@NotBlank(message = "Email não pode estar vazio ou nulo.")
+	@Email(message = "O atributo email deve ser um endereço válido")
 	private String email;
 
-	@NotBlank(message = "Email não pode estar vazio ou nulo.")
+	@NotBlank(message = "Senha não pode estar vazio ou nulo.")
 	private String senha;
 
 	private String foto;
@@ -38,11 +43,11 @@ public class Usuario {
 
 	
 	
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
