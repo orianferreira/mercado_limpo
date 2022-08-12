@@ -31,13 +31,13 @@ public class CategoriaController {
 		return ResponseEntity.ok(repository.findAll());
 	}
 	
-	@GetMapping("/{categoria}")
+	@GetMapping("/categoria/{categoria}")
 	public ResponseEntity<List<Categoria>> getByNome(@PathVariable String categoria) {
 		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(categoria));
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Categoria> getById(@PathVariable long id) {
+	public ResponseEntity<Categoria> getById(@PathVariable Long id) {
 		return repository.findById(id).map(m -> ResponseEntity.ok(m)).orElse(ResponseEntity.notFound().build()); 
 	}
 	
@@ -57,7 +57,7 @@ public class CategoriaController {
 	}
 	
 	@DeleteMapping("/{id}")
-	public void delete(@PathVariable long id) {
+	public void delete(@PathVariable Long id) {
 		repository.deleteById(id);
 	}
 }
