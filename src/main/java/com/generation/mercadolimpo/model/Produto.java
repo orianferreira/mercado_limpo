@@ -31,6 +31,8 @@ public class Produto {
 	@NotNull
 	private int estoque;
 	
+	private String foto;
+	
 	@ManyToOne
 	@JsonIgnoreProperties("produto")
 	private Categoria categoria;
@@ -95,6 +97,14 @@ public class Produto {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}	
 	
 }
